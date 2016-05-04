@@ -1,0 +1,72 @@
+<h3>{{titulo}}</h3>
+<br />
+<form name="formEstac" ng-submit="adicionar(formEstac)" novalidate>
+  <input type="text" ng-model="novoCarro.nome" name="nome" placeholder="Carro" required />
+  <div class="erro" ng-show="(formEstac.$submitted || formEstac.nome.$touched) && formEstac.nome.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novoCarro.cor" name="cor" placeholder="Cor" required />
+  <div class="erro" ng-show="(formEstac.$submitted || formEstac.cor.$touched) && formEstac.cor.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novoCarro.placa" name="placa" placeholder="Placa" required />
+  <div class="erro" ng-show="(formEstac.$submitted || formEstac.placa.$touched) && formEstac.placa.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novoCarro.marca" name="marca" placeholder="Fabricante" required />
+  <div class="erro" ng-show="(formEstac.$submitted || formEstac.placa.$touched) && formEstac.placa.$error.required">
+    Esse campo e obrigatorio
+  </div>
+  <input type="date" ng-model="novoCarro.entrada" name="entrada" required value="date.now();"/>
+  <button>Adicionar</button>
+</form>
+<hr />
+
+<input type="text" data-ng-model="pesquisa" placeholder="Pesquisa" />
+
+<br>
+<br>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Modelo</th>
+      <th>Cor</th>
+      <th>Placa</th>
+      <th>Fabricante</th>
+      <th>HrEntrada</th>
+      <th>HrSaida</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="carro in carros | filter:pesquisa">
+      <td>
+        {{carro.nome}}
+      </td>
+      <td>
+        {{carro.cor}}
+      </td>
+      <td>
+        {{carro.placa}}
+      </td>
+      <td>
+        {{carro.marca}}
+      </td>
+      <td>
+        {{carro.entrada | date:"dd/MM/yyyy 'às' HH:MMa"}}
+      </td>
+      <td>
+        {{carro.saida | date:"dd/MM/yyyy 'às' HH:MMa"}}
+      </td>
+      <td>
+        <button ng-click="remover($index, carro)">
+          Remover
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

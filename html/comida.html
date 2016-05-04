@@ -1,0 +1,63 @@
+<h3>{{titulo}}</h3>
+<br />
+<form name="formComida" ng-submit="adicionar(formComida)" novalidate>
+  <input type="text" ng-model="novaComida.nome" name="nome" placeholder="Comida" required />
+  <div class="erro" ng-show="(formComida.$submitted || formComida.nome.$touched) && formComida.nome.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novaComida.medida" name="medida" placeholder="Medida" required />
+  <div class="erro" ng-show="(formComida.$submitted || formComida.medida.$touched) && formComida.medida.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novaComida.peso" name="peso" placeholder="Peso" required />
+  <div class="erro" ng-show="(formComida.$submitted || formComida.peso.$touched) && formComida.peso.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novaComida.calorias" name="calorias" placeholder="Calorias" required />
+  <div class="erro" ng-show="(formComida.$submitted || formComida.calorias.$touched) && formComida.calorias.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <button>Adicionar</button>
+</form>
+<hr />
+<input type="text" data-ng-model="pesquisa" placeholder="Pesquisa" />
+
+<br />
+<br />
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Fruta</th>
+      <th>Medida</th>
+      <th>Peso</th>
+      <th>Caloria</th>
+      <th>Açao</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="comida in comidas | filter:pesquisa">
+      <td>
+        {{comida.nome}}
+      </td>
+      <td>
+        {{comida.medida}}
+      </td>
+      <td>
+        {{comida.peso}}
+      </td>
+      <td>
+        {{comida.calorias}}
+      </td>
+      <td>
+        <button ng-click="remover($index, comida)">
+          Remover
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

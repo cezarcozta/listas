@@ -1,0 +1,37 @@
+<h3>{{titulo}}</h3>
+
+<input type="text" data-ng-model="pesquisa" placeholder="Pesquisa" />
+
+<br>
+<br>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Volume Armazenado</th>
+      <th>Pluviometria do Dia</th>
+      <th>Pluviometria Acumulada no Mês</th>
+      <th>Média Historica do Mês</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="item in data | filter:pesquisa">
+      <td>
+        {{item.name}}
+      </td>
+      <td>
+        {{item.data.volume_armazenado}}
+      </td>
+      <td>
+        {{item.data.pluviometria_do_dia}}
+      </td>
+      <td>
+        {{item.data.pluviometria_acumulada_no_mes}}
+      </td>
+      <td>
+        {{item.data.media_historica_do_mes}}
+      </td>
+    </tr>
+  </tbody>
+</table>

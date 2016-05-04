@@ -1,0 +1,63 @@
+<h3>{{titulo}}</h3>
+<br />
+<form name="formTel" ng-submit="adicionar(formTel)" novalidate>
+  <input type="text" ng-model="novoTel.nome" name="nome" placeholder="Nome" required />
+  <div class="erro" ng-show="(formTel.$submitted || formTel.nome.$touched) && formTel.nome.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="number(2)" ng-model="novoTel.ddd" name="ddd" placeholder="DDD" required />
+  <div class="erro" ng-show="(formTel.$submitted || formTel.ddd.$touched) && formTel.ddd.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="number(10)" ng-model="novotel.numero" name="numero" placeholder="Número" required />
+  <div class="erro" ng-show="(formTel.$submitted || formTel.numero.$touched) && formTel.numero.$error.required">
+    Esse campo e obrigatorio
+  </div>
+
+  <input type="text" ng-model="novoTel.operadora" name="operadora" placeholder="Operadora" required />
+  <div class="erro" ng-show="(formTel.$submitted || formTel.operadora.$touched) && formTel.operadora.$error.required">
+    Esse campo e obrigatorio
+  </div>
+  <button>Adicionar</button>
+</form>
+<hr />
+
+<input type="text" data-ng-model="pesquisa" placeholder="Pesquisa" />
+
+<br>
+<br>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>DDD</th>
+      <th>Numero</th>
+      <th>Operadora</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="telefone in telefones | filter:pesquisa">
+      <td>
+        {{telefone.nome}}
+      </td>
+      <td>
+        {{telefone.ddd}}
+      </td>
+      <td>
+        {{telefone.numero}}
+      </td>
+      <td>
+        {{telefone.operadora}}
+      </td>
+      <td>
+        <button ng-click="remover($index, telefone)">
+          Remover
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
